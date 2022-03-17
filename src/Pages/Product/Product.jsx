@@ -1,6 +1,6 @@
 import Header from "../../Components/Header/Header";
 import product from "../../Images/product.png";
-import "./Product.css";
+// import "./Product.css";
 const Product = () => {
     return (
         <>

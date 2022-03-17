@@ -4,7 +4,7 @@ import dress from "../../Images/Categories/noun-dress-4464238.svg";
 import jackets from "../../Images/Categories/noun-jacket-4464235.svg";
 import shorts from "../../Images/Categories/noun-pants-4464239.svg";
 import pants from "../../Images/Categories/noun-pants-4464242.svg";
-import "./Category.css";
+import styles from "./Category.module.css";
 
 const Categories = () => {
     const category = [
@@ -42,18 +42,18 @@ const Categories = () => {
 
     return(
         <>
-        <section className="category-section container">  
+        <section className="container">  
             <div className="section-heading">
                 <h3 className="center-text">Categories</h3>
             </div>
-            <div classNameName="category-container">
+            <div className={styles.category_container}>
                 {
                     category.map(item => (
-                        <div classNameName="category-col" key={item.id}>
-                            <div classNameName="category-col-image">
-                                <img src={item.img} alt={item.title} />
+                        <div className={styles.category_col} key={item.id}>
+                            <div className={styles.category_col_image}>
+                                <img src={item.img} alt={item.title} className={styles.category_img}/>
                             </div>
-                            <h4 classNameName="center-text">{item.title}</h4>
+                            <h4 className="center-text">{item.title}</h4>
                         </div>
                     ))
                 }

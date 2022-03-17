@@ -1,4 +1,4 @@
-import "./Signup.css";
+// import "./Signup.css";
 const Signup = () =>{
     return(
         <>

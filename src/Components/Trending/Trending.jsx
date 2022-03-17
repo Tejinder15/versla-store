@@ -3,7 +3,7 @@ import knit from "../../Images/Models/Rib_Knit_Wool_Jumper.jpg";
 import cotton from "../../Images/Models/Fit_Cotton_Zip_Through_Hoodie.jpg";
 import dungarees from "../../Images/Models/Dungarees.jpg";
 import cargo from "../../Images/Models/Fit_Cargo_Joggers.jpg";
-import "./Trending.css";
+import styles from "./Trending.module.css";
 
 const Trending = () => {
     const trend = [
@@ -50,25 +50,25 @@ const Trending = () => {
     ]
     return(
         <>
-        <section className="trending-section container">
+        <section className="container">
             <div className="section-heading">
                 <h3 className="center-text">Trending</h3>
             </div>
-            <div className="trending-container">
+            <div className={styles.trending_container}>
                 {
                     trend.map(item=>(
-                        <div className="basic-card" key={item.id}>
+                        <div className={`${styles.basic_card} basic-card`} key={item.id}>
                             <div className="basic-card-image-title badge-image-title">
                                 <img src={item.img} alt={item.title} className="product-vertical-image"/>
                             </div>
                             <div className="basic-card-primary">
                                 <p className="product-title">{item.title}</p>
                                 <div className="product-price-rating">
-                                    <div className="product-price-container">
+                                    <div className={styles.product_price_container}>
                                         <span className="product-price">&#8377;{item.price}</span>
                                         <span className="product-discount-price">&#8377;{item.discount}</span>
                                     </div>
-                                    <div className="read-only-rating">
+                                    <div className={`${styles.read_only_rating} read-only-rating`}>
                                         <span className="small">{item.rating}</span>
                                         <span className="material-icons-round">star_border</span>
                                     </div>

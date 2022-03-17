@@ -1,5 +1,6 @@
 import men from "../../Images/2.jpg";
 import women from "../../Images/3.jpg";
+import styles from "./Deals.module.css";
 
 const Deals = () => {
     const dealArr = [
@@ -16,17 +17,17 @@ const Deals = () => {
     ]
     return(
         <>
-        <section className="dealsfor-section container">
+        <section className="container">
             <div className="section-heading">
                 <h3 className="center-text">Deals For</h3>
             </div>
-            <div className="dealsfor-container">
+            <div className={styles.dealsfor_container}>
             {
                 dealArr.map(item => (
-                    <div className="dealsfor-col">
+                    <div className={styles.dealsfor_col}>
                         <a href="./Pages/product.html">
-                            <img src={item.img} alt={item.title} className="dealsfor-pic"/>
-                            <div className="after">{item.title}</div>
+                            <img src={item.img} alt={item.title} className={styles.dealsfor_pic}/>
+                            <div className={styles.after}>{item.title}</div>
                         </a>
                     </div>
                 ))

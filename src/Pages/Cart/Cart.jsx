@@ -1,6 +1,6 @@
 import Header from "../../Components/Header/Header";
 import Product from "../../Images/product.png";
-import "./Cart.css";
+// import "./Cart.css";
 const Cart = () => {
     return(
         <>

@@ -10,16 +10,17 @@ nav {
   box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.3);
 }
 
-.nav-links {
+.nav_links {
   display: flex;
   align-items: center;
+  list-style-type: none;
 }
 
-.nav-links > * {
+.nav_links > * {
   margin-right: 16px;
 }
 
-.login-btn {
+.login_btn {
   border: none;
   padding: 0.5rem 1rem;
   background-color: var(--blue-place-order);
