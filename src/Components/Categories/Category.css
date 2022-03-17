@@ -1,0 +1,20 @@
+.category-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+}
+
+.category-col-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--blob-color);
+  border-radius: 16px;
+  max-width: 170px;
+  height: 180px;
+}
+
+.category-col img {
+  max-width: 100%;
+}
