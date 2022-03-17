@@ -42,18 +42,18 @@ const Categories = () => {
 
     return(
         <>
-        <section class="category-section container">  
-            <div class="section-heading">
-                <h3 class="center-text">Categories</h3>
+        <section className="category-section container">  
+            <div className="section-heading">
+                <h3 className="center-text">Categories</h3>
             </div>
-            <div className="category-container">
+            <div classNameName="category-container">
                 {
                     category.map(item => (
-                        <div className="category-col" key={item.id}>
-                            <div className="category-col-image">
+                        <div classNameName="category-col" key={item.id}>
+                            <div classNameName="category-col-image">
                                 <img src={item.img} alt={item.title} />
                             </div>
-                            <h4 className="center-text">{item.title}</h4>
+                            <h4 classNameName="center-text">{item.title}</h4>
                         </div>
                     ))
                 }

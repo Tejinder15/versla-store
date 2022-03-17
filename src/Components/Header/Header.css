@@ -1,3 +1,31 @@
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 5;
+}
+
+nav {
+  box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.3);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links > * {
+  margin-right: 16px;
+}
+
+.login-btn {
+  border: none;
+  padding: 0.5rem 1rem;
+  background-color: var(--blue-place-order);
+  color: white;
+}
+
 .hamburger > div {
   width: 25px;
   height: 3px;

@@ -50,27 +50,27 @@ const Trending = () => {
     ]
     return(
         <>
-        <section class="trending-section container">
-            <div class="section-heading">
-                <h3 class="center-text">Trending</h3>
+        <section className="trending-section container">
+            <div className="section-heading">
+                <h3 className="center-text">Trending</h3>
             </div>
-            <div class="trending-container">
+            <div className="trending-container">
                 {
                     trend.map(item=>(
-                        <div class="basic-card" key={item.id}>
-                            <div class="basic-card-image-title badge-image-title">
-                                <img src={item.img} alt={item.title} class="product-vertical-image"/>
+                        <div className="basic-card" key={item.id}>
+                            <div className="basic-card-image-title badge-image-title">
+                                <img src={item.img} alt={item.title} className="product-vertical-image"/>
                             </div>
-                            <div class="basic-card-primary">
-                                <p class="product-title">{item.title}</p>
-                                <div class="product-price-rating">
-                                    <div class="product-price-container">
-                                        <span class="product-price">&#8377;{item.price}</span>
-                                        <span class="product-discount-price">&#8377;{item.discount}</span>
+                            <div className="basic-card-primary">
+                                <p className="product-title">{item.title}</p>
+                                <div className="product-price-rating">
+                                    <div className="product-price-container">
+                                        <span className="product-price">&#8377;{item.price}</span>
+                                        <span className="product-discount-price">&#8377;{item.discount}</span>
                                     </div>
-                                    <div class="read-only-rating">
-                                        <span class="small">{item.rating}</span>
-                                        <span class="material-icons-round">star_border</span>
+                                    <div className="read-only-rating">
+                                        <span className="small">{item.rating}</span>
+                                        <span className="material-icons-round">star_border</span>
                                     </div>
                                 </div>
                             </div>

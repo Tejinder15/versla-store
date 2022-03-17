@@ -16,17 +16,17 @@ const Deals = () => {
     ]
     return(
         <>
-        <section class="dealsfor-section container">
-            <div class="section-heading">
-                <h3 class="center-text">Deals For</h3>
+        <section className="dealsfor-section container">
+            <div className="section-heading">
+                <h3 className="center-text">Deals For</h3>
             </div>
-            <div class="dealsfor-container">
+            <div className="dealsfor-container">
             {
                 dealArr.map(item => (
-                    <div class="dealsfor-col">
+                    <div className="dealsfor-col">
                         <a href="./Pages/product.html">
-                            <img src={item.img} alt={item.title} class="dealsfor-pic"/>
-                            <div class="after">{item.title}</div>
+                            <img src={item.img} alt={item.title} className="dealsfor-pic"/>
+                            <div className="after">{item.title}</div>
                         </a>
                     </div>
                 ))
