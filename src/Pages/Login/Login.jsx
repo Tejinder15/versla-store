@@ -6,7 +6,7 @@ const Login = () => {
             <form action="">
                 <div className="input-group">
                     <label for="username">Email address</label>
-                    <input type="text" name="username" required autocomplete="off"/>
+                    <input type="text" name="username" className="textfield" required autocomplete="off"/>
                 </div>
                 <div className="input-group">
                     <label for="password">Password</label>

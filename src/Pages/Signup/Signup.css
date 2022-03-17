@@ -1,0 +1,129 @@
+/* main {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f7f7;
+} */
+
+.auth-container {
+  max-width: 325px;
+  padding: 1.2rem 2.2rem;
+  border-radius: 3px;
+  box-sizing: content-box;
+  background-color: white;
+  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form-heading {
+  text-align: center;
+}
+
+/* Input Fields */
+.textfield,
+input[type="password"] {
+  width: 100%;
+}
+
+.name-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.name-container .input-group {
+  max-width: 200px;
+  width: 50%;
+  margin-bottom: 0;
+}
+
+.name-container .input-group + .input-group {
+  margin-left: 8px;
+}
+
+input.name {
+  min-width: 0;
+}
+
+.input-group {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.forgot-pass {
+  margin-left: 1rem;
+}
+
+#remember,
+#terms {
+  height: 20px;
+  width: 20px;
+}
+
+.choice-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Choice Check for Signup */
+.choice-check {
+  display: flex;
+  align-items: center;
+}
+
+.choice-label,
+.forgot-pass {
+  font-size: 80%;
+}
+
+.forgot-pass {
+  color: var(--forgot-pass);
+  font-size: 85%;
+}
+
+.btn-primary {
+  width: 100%;
+  transition: none;
+  text-transform: capitalize;
+  margin: 1rem 0;
+  border-radius: 3px;
+  background: var(--orange-grand-dark);
+  background: -webkit-linear-gradient(
+    to right,
+    var(--orange-grand-light),
+    var(--orange-grand-dark)
+  );
+  background: linear-gradient(
+    to right,
+    var(--orange-grand-light),
+    var(--orange-grand-dark)
+  );
+}
+
+.signup-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 1rem 0;
+}
+
+.signup-link {
+  color: black;
+  margin-bottom: 2px;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+/* Media Query */
+@media only screen and (max-width: 425px) {
+  .auth-container {
+    padding: 1.2rem 0.6rem;
+  }
+}
