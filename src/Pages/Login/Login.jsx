@@ -5,16 +5,16 @@ const Login = () => {
             <h2 className="form-heading center-text">Login</h2>
             <form action="">
                 <div className="input-group">
-                    <label for="username">Email address</label>
-                    <input type="text" name="username" className="textfield" required autocomplete="off"/>
+                    <label htmlFor="username">Email address</label>
+                    <input type="text" name="username" className="textfield" required autocomplete="off" id="username"/>
                 </div>
                 <div className="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" required />
+                    <label htmlFor="password">Password</label>
+                    <input type="password" name="password" required id="password"/>
                 </div>
                 <div className="choice-group">
                     <input type="checkbox" name="remember" id="remember"/>
-                    <label for="remember" className="remember">Remember me</label>
+                    <label htmlFor="remember" className="remember">Remember me</label>
                     <a href="" className="forgot-pass">Forgot your Password?</a>
                 </div>
                 <button type="submit" className="btn btn-primary">Login</button>

@@ -122,6 +122,10 @@ input[type="password"] {
   margin-top: -4px;
 }
 
+.price {
+  font-family: "Roboto", sans-serif;
+}
+
 .basic-card-image {
   background-color: #e9ecef;
 }

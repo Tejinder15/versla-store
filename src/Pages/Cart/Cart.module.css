@@ -2,68 +2,8 @@
   color: black;
 }
 
-.product_discount {
-  color: #8b9a9b;
-}
-
-.price {
-  font-family: "Roboto", sans-serif;
-}
-
 .mycart_container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-}
-
-/* Price Details */
-.price_details_container {
-  background-color: white;
-  min-width: 400px;
-  max-width: 420px;
-  padding: 1.6rem 1.8rem;
-  border: 1px solid black;
-}
-
-.price-details-heading {
-  text-transform: uppercase;
-}
-
-.price_detail_item {
-  display: flex;
-  justify-content: space-between;
-}
-
-.total_amount_container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.total_amount_title,
-.total_amount {
-  font-weight: bold;
-  font-size: 1.35rem;
-}
-
-.place_order {
-  width: 100%;
-  padding: 0.6rem 0;
-  font-family: "Poppins", sans-serif;
-  border: none;
-  background-color: var(--yellow-test-one);
-  color: white;
-  cursor: pointer;
-}
-
-@media only screen and (max-width: 988px) {
-  .price_details_container {
-    margin-top: 1.5rem;
-  }
-}
-
-@media only screen and (max-width: 576px) {
-  .price_details_container {
-    min-width: auto;
-    width: 100%;
-  }
 }
