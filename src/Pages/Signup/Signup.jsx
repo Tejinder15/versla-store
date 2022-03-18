@@ -44,4 +44,4 @@ const Signup = () =>{
     );
 }
 
-export default Signup;
+export {Signup};
