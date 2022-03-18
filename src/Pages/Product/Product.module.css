@@ -1,4 +1,4 @@
-.filter-panel {
+.filter_panel {
   height: 100%;
   max-width: 280px;
   min-width: 250px;
@@ -9,24 +9,24 @@
   box-shadow: 2px 0px 3px rgba(0, 0, 0, 0.3);
 }
 
-.filter-option {
+.filter_option {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.clear-btn {
+.clear_btn {
   background-color: transparent;
   border: none;
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
 }
 
-.clear-btn:hover {
+.clear_btn:hover {
   text-decoration: underline;
 }
 
-.price-value {
+.price_value {
   display: flex;
   justify-content: space-between;
 }
@@ -39,16 +39,16 @@ main {
   margin-left: 250px;
 }
 
-.move-to-cart {
+.move_to_cart {
   background-color: var(--blue-place-order);
 }
 
-.products-container {
+.products_container {
   margin-top: 1rem;
 }
 
 @media only screen and (max-width: 486px) {
-  .filter-panel {
+  .filter_panel {
     display: none;
   }
   main {

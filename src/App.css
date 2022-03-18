@@ -1,5 +1,162 @@
+.auth-container {
+  max-width: 325px;
+  padding: 1.2rem 2.2rem;
+  border-radius: 3px;
+  box-sizing: content-box;
+  background-color: white;
+  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.textfield,
+input[type="password"] {
+  width: 100%;
+}
+
+.name-container .input-group {
+  max-width: 200px;
+  width: 50%;
+  margin-bottom: 0;
+}
+
+.name-container .input-group + .input-group {
+  margin-left: 8px;
+}
+
+.input-group {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.choice-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-primary {
+  width: 100%;
+  transition: none;
+  text-transform: capitalize;
+  margin: 1rem 0;
+  border-radius: 3px;
+  background: var(--orange-grand-dark);
+  background: -webkit-linear-gradient(
+    to right,
+    var(--orange-grand-light),
+    var(--orange-grand-dark)
+  );
+  background: linear-gradient(
+    to right,
+    var(--orange-grand-light),
+    var(--orange-grand-dark)
+  );
+}
+
+.forgot-pass {
+  margin-left: 1rem;
+}
+
+#remember,
+#terms {
+  height: 20px;
+  width: 20px;
+}
+
+.choice-check {
+  display: flex;
+  align-items: center;
+}
+
+.choice-label,
+.forgot-pass {
+  font-size: 80%;
+}
+
+.forgot-pass {
+  color: var(--forgot-pass);
+  font-size: 85%;
+}
+
+.signup-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 1rem 0;
+}
+
+.signup-link {
+  color: black;
+  margin-bottom: 2px;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
 .section-heading {
   margin-bottom: 4.6rem;
   display: flex;
   justify-content: center;
+}
+
+.section-head {
+  display: inline-block;
+  font-size: 2.6rem;
+  border-bottom: 6px solid var(--orange-grand-light);
+}
+
+.wishlist-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  column-gap: 0.8rem;
+  row-gap: 1.6rem;
+  justify-items: center;
+}
+
+.product-price {
+  font-family: "Roboto", sans-serif;
+  margin-top: -4px;
+}
+
+.basic-card-image {
+  background-color: #e9ecef;
+}
+
+.basic-card-actions {
+  width: 100%;
+  padding: 0;
+}
+
+.move-to-cart {
+  width: 100%;
+  padding: 0.8rem 0;
+  background-color: var(--blob-hover-color);
+  border: none;
+  font-size: 0.9rem;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+
+.prod-mtw {
+  border-color: var(--blob-hover2-color);
+  border-width: 2px;
+  color: var(--blob-hover2-color);
+}
+
+.prod-rfc {
+  background-color: var(--blob-hover-color);
+}
+
+.product-card {
+  align-self: flex-start;
+}
+
+@media only screen and (max-width: 576px) {
+  .product-card {
+    width: 100%;
+  }
 }

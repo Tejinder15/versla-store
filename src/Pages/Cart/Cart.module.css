@@ -2,11 +2,7 @@
   color: black;
 }
 
-.product-card {
-  align-self: flex-start;
-}
-
-.product-discount {
+.product_discount {
   color: #8b9a9b;
 }
 
@@ -14,24 +10,14 @@
   font-family: "Roboto", sans-serif;
 }
 
-.prod-rfc {
-  background-color: var(--yellow-test-one);
-}
-
-.prod-mtw {
-  border-color: var(--orange-test-one);
-  border-width: 2px;
-  color: var(--orange-test-two);
-}
-
-.mycart-container {
+.mycart_container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
 /* Price Details */
-.price-details-container {
+.price_details_container {
   background-color: white;
   min-width: 400px;
   max-width: 420px;
@@ -43,48 +29,40 @@
   text-transform: uppercase;
 }
 
-.price-detail-item {
+.price_detail_item {
   display: flex;
   justify-content: space-between;
 }
 
-.total-amount-container {
+.total_amount_container {
   display: flex;
   justify-content: space-between;
 }
 
-.total-amount-title,
-.total-amount {
+.total_amount_title,
+.total_amount {
   font-weight: bold;
   font-size: 1.35rem;
 }
 
-.total-amount-title {
-  text-transform: uppercase;
-}
-
-.place-order {
+.place_order {
   width: 100%;
   padding: 0.6rem 0;
   font-family: "Poppins", sans-serif;
   border: none;
-  background-color: var(--blue-place-order);
+  background-color: var(--yellow-test-one);
   color: white;
   cursor: pointer;
 }
 
 @media only screen and (max-width: 988px) {
-  .price-details-container {
+  .price_details_container {
     margin-top: 1.5rem;
   }
 }
 
 @media only screen and (max-width: 576px) {
-  .product-card {
-    width: 100%;
-  }
-
-  .price-details-container {
+  .price_details_container {
     min-width: auto;
     width: 100%;
   }

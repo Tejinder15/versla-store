@@ -2,7 +2,7 @@ const Login = () => {
     return (
         <>
         <div className="auth-container">
-            <h2 className="form-heading">Login</h2>
+            <h2 className="form-heading center-text">Login</h2>
             <form action="">
                 <div className="input-group">
                     <label for="username">Email address</label>

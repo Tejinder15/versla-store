@@ -44,7 +44,7 @@ const Categories = () => {
         <>
         <section className="container">  
             <div className="section-heading">
-                <h3 className="center-text">Categories</h3>
+                <h3 className="center-text section-head">Categories</h3>
             </div>
             <div className={styles.category_container}>
                 {

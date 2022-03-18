@@ -8,7 +8,6 @@ const Home = () => {
     return(
         <>
         <Header />
-    <main>
         <section className={`${styles.hero_container} container`}>
             <div className={styles.hero_text_container}>
                 <h2 className={styles.hero_text}>Fashion as unique as you are.</h2>
@@ -22,7 +21,6 @@ const Home = () => {
         <Categories/>
         <Deals />
         <Trending />
-    </main>
         </>
     );
 }

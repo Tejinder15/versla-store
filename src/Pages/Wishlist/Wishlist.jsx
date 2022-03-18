@@ -1,6 +1,6 @@
 import Header from "../../Components/Header/Header";
 import product from "../../Images/product.png";
-// import "./Wishlist.css";
+
 const Wishlist = () =>{
     return (
         <>
@@ -18,8 +18,8 @@ const Wishlist = () =>{
                     </div>
                     <div className="basic-card-details">
                         <div className="basic-card-secondary">
-                            <p className="product-title">Men Premium Jacket</p>
-                            <h3 className="product-price">&#8377;2000</h3>
+                            <p className="product-title center-text">Men Premium Jacket</p>
+                            <h3 className="product-price center-text">&#8377;2000</h3>
                         </div>
                     </div>
                     <div className="basic-card-actions">
@@ -37,8 +37,8 @@ const Wishlist = () =>{
                     </div>
                     <div className="basic-card-details">
                         <div className="basic-card-secondary">
-                            <p className="product-title">Men Premium Jacket</p>
-                            <h3 className="product-price">&#8377;2000</h3>
+                            <p className="product-title center-text">Men Premium Jacket</p>
+                            <h3 className="product-price center-text">&#8377;2000</h3>
                         </div>
                     </div>
                     <div className="basic-card-actions">
@@ -56,8 +56,8 @@ const Wishlist = () =>{
                     </div>
                     <div className="basic-card-details">
                         <div className="basic-card-secondary">
-                            <p className="product-title">Men Premium Jacket</p>
-                            <h3 className="product-price">&#8377;2000</h3>
+                            <p className="product-title center-text">Men Premium Jacket</p>
+                            <h3 className="product-price center-text">&#8377;2000</h3>
                         </div>
                     </div>
                     <div className="basic-card-actions">
@@ -75,8 +75,8 @@ const Wishlist = () =>{
                     </div>
                     <div className="basic-card-details">
                         <div className="basic-card-secondary">
-                            <p className="product-title">Men Premium Jacket</p>
-                            <h3 className="product-price">&#8377;2000</h3>
+                            <p className="product-title center-text">Men Premium Jacket</p>
+                            <h3 className="product-price center-text">&#8377;2000</h3>
                         </div>
                     </div>
                     <div className="basic-card-actions">
@@ -94,8 +94,8 @@ const Wishlist = () =>{
                     </div>
                     <div className="basic-card-details">
                         <div className="basic-card-secondary">
-                            <p className="product-title">Men Premium Jacket</p>
-                            <h3 className="product-price">&#8377;2000</h3>
+                            <p className="product-title center-text">Men Premium Jacket</p>
+                            <h3 className="product-price center-text">&#8377;2000</h3>
                         </div>
                     </div>
                     <div className="basic-card-actions">

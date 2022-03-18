@@ -1,36 +1,36 @@
-// import "./Signup.css";
+import styles from "./Signup.module.css";
 const Signup = () =>{
     return(
         <>
         <div className="auth-container">
-            <h2 className="form-heading">Signup</h2>
+            <h2 className="center-text">Signup</h2>
             <form action="">
-                <div className="name-container">
+                <div className={styles.name_container}>
                     <div className="input-group">
-                        <label for="first_name">First Name</label>
-                        <input type="text" name="first_name" className="name" required autocomplete="off" />
+                        <label htmlFor="first_name">First Name</label>
+                        <input type="text" name="first_name" className={styles.fname} required autoComplete="off" />
                     </div>
                     <div className="input-group">
-                        <label for="last_name">Last Name</label>
-                        <input type="text" name="last_name" className="name" required autocomplete="off" />
+                        <label htmlFor="last_name">Last Name</label>
+                        <input type="text" name="last_name" className={styles.lname} required autoComplete="off" />
                     </div>
                 </div>
                 <div className="input-group">
-                    <label for="email">Email address</label>
-                    <input type="text" name="email" className="textfield" required autocomplete="off" />
+                    <label htmlFor="email">Email address</label>
+                    <input type="text" name="email" className="textfield" required autoComplete="off" />
                 </div>
                 <div className="input-group">
-                    <label for="password">Password</label>
+                    <label htmlFor="password">Password</label>
                     <input type="password" name="password" required />
                 </div>
                 <div className="input-group">
-                    <label for="confirm_password">Confirm Password</label>
+                    <label htmlFor="confirm_password">Confirm Password</label>
                     <input type="password" name="confirm_password" required />
                 </div>
                 <div className="choice-group">
                     <span className="choice-check">
                         <input type="checkbox" name="terms" id="terms" />
-                        <label for="terms">I accept all Terms & Conditions</label>
+                        <label htmlFor="terms">I accept all Terms &#38; Conditions</label>
                     </span>
                 </div>
                 <button type="submit" className="btn btn-primary">Create New Account</button>

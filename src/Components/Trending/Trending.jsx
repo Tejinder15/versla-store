@@ -52,7 +52,7 @@ const Trending = () => {
         <>
         <section className="container">
             <div className="section-heading">
-                <h3 className="center-text">Trending</h3>
+                <h3 className="center-text section-head">Trending</h3>
             </div>
             <div className={styles.trending_container}>
                 {
