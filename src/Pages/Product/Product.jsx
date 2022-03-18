@@ -14,6 +14,8 @@ const Product = () => {
                 <ProductCard image={product}/>
                 <ProductCard image={product}/>
                 <ProductCard image={product}/>
+                <ProductCard image={product}/>
+                <ProductCard image={product}/>
             </div>
         </main>
         </div>
