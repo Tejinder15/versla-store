@@ -1,0 +1,17 @@
+main {
+  margin-left: 260px;
+}
+
+.move_to_cart {
+  background-color: var(--blue-place-order);
+}
+
+.products_container {
+  margin-top: 1rem;
+}
+
+@media only screen and (max-width: 486px) {
+  main {
+    margin-left: 0;
+  }
+}

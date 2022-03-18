@@ -1,0 +1,26 @@
+.section_heading {
+  margin-bottom: 4.6rem;
+  display: flex;
+  justify-content: center;
+}
+
+.category_container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+}
+
+.category_col_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--blob-color);
+  border-radius: 16px;
+  max-width: 170px;
+  height: 180px;
+}
+
+.category_img {
+  max-width: 100%;
+}

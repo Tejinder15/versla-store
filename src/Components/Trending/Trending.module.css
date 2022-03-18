@@ -1,0 +1,31 @@
+.read_only_rating {
+  background-color: var(--blob-hover2-color);
+}
+
+.trending_container {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.basic_card {
+  transition: 0.3s ease;
+}
+
+.product_price_container {
+  font-family: "Roboto", sans-serif;
+}
+
+@media only screen and (max-width: 1110px) {
+  .trending_container {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    row-gap: 1rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .basic_card:hover {
+    z-index: 3;
+    transform: scale(1.2);
+  }
+}
