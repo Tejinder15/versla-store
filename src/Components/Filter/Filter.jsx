@@ -1,8 +1,12 @@
+import { useSearchParams } from "react-router-dom";
 import styles from "./Filter.module.css";
 import InputOption from "./InputOption/InputOption";
 import PricePoints from "./PricePoints/PricePoints";
 
 const Filter = () => {
+
+    const [searchParams,setSearchParams] = useSearchParams();
+    const queryCategory = searchParams.get('category');
     return(
         <aside className={styles.filter_panel}>
             <div className={styles.filter_option}>
@@ -22,15 +26,11 @@ const Filter = () => {
             </div>
             <div className="category-option">
                 <h3>Category</h3>
-                <InputOption type="checkbox" name="men" id="men" title="Men Clothing"/>
-                <InputOption type="checkbox" name="women" id="women" title="Women Clothing"/>
+                <InputOption type="checkbox" name="men" id="men" title="Men Clothing" checked={queryCategory==="men"?"Checked":""}/>
+                <InputOption type="checkbox" name="women" id="women" title="Women Clothing" checked={queryCategory==="women"?"Checked":""}/>
             </div>
             <div className="rating-option">
                 <h3>Rating</h3>
-                <div className="input-option">
-                    <input type="radio" name="stars" id="4stars"/>
-                    <label htmlFor="4stars">4 Stars &#38; above</label>
-                </div>
                 <InputOption type="radio" name="stars" id="4stars" title="4 Stars &#38; above"/>
                 <InputOption type="radio" name="stars" id="3stars" title="3 Stars &#38; above"/>
                 <InputOption type="radio" name="stars" id="2stars" title="2 Stars &#38; above"/>

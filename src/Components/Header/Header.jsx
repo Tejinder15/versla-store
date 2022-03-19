@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 
 const Header = () => {
@@ -10,10 +11,18 @@ const Header = () => {
                 </div>
                 <ul className={styles.nav_links}>
                     <li><span className="material-icons-outlined">search</span></li>
-                    <li><span className="material-icons-outlined">favorite_border</span></li>
-                    <li><span className="material-icons-outlined">shopping_bag</span></li>
-                    <li className={styles.login_btn}>
-                        Login
+                    <li>
+                        <Link to="/wishlist" className={styles.nav_item}>
+                            <span className="material-icons-outlined">favorite_border</span>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/cart" className={styles.nav_item}>
+                            <span className="material-icons-outlined">shopping_bag</span>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/login" className={styles.login_btn}>Login</Link>
                     </li>
                 </ul>
                 <div className={styles.hamburger}>

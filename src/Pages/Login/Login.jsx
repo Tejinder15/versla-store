@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Login = () => {
     return (
         <>
@@ -15,12 +17,12 @@ const Login = () => {
                 <div className="choice-group">
                     <input type="checkbox" name="remember" id="remember"/>
                     <label htmlFor="remember" className="remember">Remember me</label>
-                    <a href="" className="forgot-pass">Forgot your Password?</a>
+                    <a className="forgot-pass">Forgot your Password?</a>
                 </div>
                 <button type="submit" className="btn btn-primary">Login</button>
             </form>
             <div className="signup-group">
-                <a href="./signup.html" className="signup-link">Create New Account</a>
+                <Link to="/signup" className="signup-link">Create New Account</Link>
                 <span className="material-icons-outlined">navigate_next</span>
             </div>
         </div>

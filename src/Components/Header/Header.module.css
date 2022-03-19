@@ -20,6 +20,10 @@ nav {
   margin-right: 16px;
 }
 
+.nav_item {
+  color: black;
+}
+
 .login_btn {
   border: none;
   padding: 0.5rem 1rem;
