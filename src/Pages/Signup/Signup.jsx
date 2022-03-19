@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./Signup.module.css";
 const Signup = () =>{
     return(
@@ -36,7 +37,7 @@ const Signup = () =>{
                 <button type="submit" className="btn btn-primary">Create New Account</button>
             </form>
             <div className="signup-group">
-                <a href="./login.html" className="signup-link">Already have an account</a>
+                <Link to="/login" className="signup-link">Already have an account</Link>
                 <span className="material-icons-outlined">navigate_next</span>
             </div>
         </div>

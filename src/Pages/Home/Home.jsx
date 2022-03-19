@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Categories from "../../Components/Categories/Categories";
 import Deals from "../../Components/Deals/Deals";
 import Header from "../../Components/Header/Header";
@@ -12,7 +13,7 @@ const Home = () => {
             <div className={styles.hero_text_container}>
                 <h2 className={styles.hero_text}>Fashion as unique as you are.</h2>
                 <p className={`${styles.gray_text} gray-text`}>Explore the New Fashion Trend with various categories and get Dressed.</p>
-                <a href="" className={styles.explore_btn}>Explore</a>
+                <Link to="/product" className={styles.explore_btn}>Explore</Link>
             </div>
             <div className={styles.hero_img_container}>
                 <img src={ecomm} alt="hero" className={styles.hero_img}/>
