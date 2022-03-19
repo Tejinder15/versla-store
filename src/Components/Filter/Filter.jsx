@@ -6,7 +6,6 @@ import PricePoints from "./PricePoints/PricePoints";
 const Filter = () => {
 
     const [searchParams,setSearchParams] = useSearchParams();
-    // searchParams.get()
     const queryCategory = searchParams.get('category');
     return(
         <aside className={styles.filter_panel}>

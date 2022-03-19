@@ -28,7 +28,6 @@ const Deals = () => {
             {
                 dealArr.map(item => (
                     <div className={styles.dealsfor_col} key={item.id}>
-                        {/* TODO: To check the desired check box in filter panel when user selects here */}
                         <Link to={"/product"+`?category=${item.query}`}>
                             <img src={item.img} alt={item.title} className={styles.dealsfor_pic}/>
                             <div className={styles.after}>{item.title}</div>
