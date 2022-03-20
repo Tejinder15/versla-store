@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+import {cat1,cat2,cat3,cat4,cat5,cat6} from "../../Images/Categories";
 
 /**
  * Category Database can be added here.
@@ -8,20 +9,32 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
-    description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+    categoryName: "T-shirt",
+    image: cat1
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
-    description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+    categoryName: "Shirt",
+    image: cat2
   },
   {
     _id: uuid(),
-    categoryName: "horror",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+    categoryName: "Dress",
+    image: cat3
   },
+  {
+    _id: uuid(),
+    categoryName: "Jackets",
+    image: cat4
+  },
+  {
+    _id: uuid(),
+    categoryName: "Shorts",
+    image: cat5
+  },
+  {
+    _id: uuid(),
+    categoryName: "Pants",
+    image: cat6
+  }
 ];
