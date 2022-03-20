@@ -1,9 +1,23 @@
+import {useState,useEffect} from "react";
+import axios from "axios";
 import Filter from "../../Components/Filter/Filter";
 import Header from "../../Components/Header/Header";
 import ProductCard from "../../Components/ProductCard/ProductCard";
-import product from "../../Images/product.png";
 import styles from "./Product.module.css";
 const Product = () => {
+    const [products,setProducts] = useState([]);
+
+    const loadProducts = async () =>{
+        try{
+            const response = await axios.get("/api/products");
+            setProducts(response.data.products);
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+
+    useEffect(()=>loadProducts(),[]);
     return (
         <>
         <Header />
@@ -11,11 +25,9 @@ const Product = () => {
             <Filter />
         <main>
             <div className={`wishlist-container ${styles.products_container}`}>
-                <ProductCard image={product}/>
-                <ProductCard image={product}/>
-                <ProductCard image={product}/>
-                <ProductCard image={product}/>
-                <ProductCard image={product}/>
+                {products.map(item=>(
+                    <ProductCard productImg={item.image} productTitle={item.title} productPrice={item.price} key={item._id}/>
+                ))}
             </div>
         </main>
         </div>
