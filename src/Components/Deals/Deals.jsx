@@ -28,7 +28,7 @@ const Deals = () => {
             {
                 dealArr.map(item => (
                     <div className={styles.dealsfor_col} key={item.id}>
-                        <Link to={"/product"+`?category=${item.query}`}>
+                        <Link to={"/product"+`?gender=${item.query}`}>
                             <img src={item.img} alt={item.title} className={styles.dealsfor_pic}/>
                             <div className={styles.after}>{item.title}</div>
                         </Link>
