@@ -1,12 +1,22 @@
 .filter_panel {
-  height: 100%;
+  height: 650px;
   max-width: 280px;
   min-width: 250px;
   padding: 1.6rem 1rem;
   position: fixed;
-  top: 62px;
+  top: 68px;
   background-color: white;
   box-shadow: 2px 0px 3px rgba(0, 0, 0, 0.3);
+  overflow-y: scroll;
+}
+
+.filter_panel::-webkit-scrollbar {
+  width: 4px;
+}
+
+.filter_panel::-webkit-scrollbar-thumb {
+  background-color: #ced4da;
+  border-radius: 10px;
 }
 
 .filter_option {
