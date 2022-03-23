@@ -1,7 +1,28 @@
 import { Link } from "react-router-dom";
+import {useState} from "react";
+import { useNavigate } from "react-router";
+import { useAuth } from "../../Context/AuthContext/auth-context";
 import styles from "./Header.module.css";
 
 const Header = () => {
+    const {authState,authDispatch} = useAuth();
+    const userName = authState.user;
+    const redirect = useNavigate();
+
+    const checkStatus = (userName) => {
+        return userName ? "Logout" : "Login";
+    }
+
+    const logoutHandler = () => {
+        redirect("/");
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        authDispatch({type:"LOGOUT"});
+    }
+
+    const userHandler = async (type) => {
+        type === "Login" ? redirect("/login"): logoutHandler();
+    }
     return (
         <>
         <header>
@@ -22,7 +43,12 @@ const Header = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/login" className={styles.login_btn}>Login</Link>
+                        {/* <Link to="/login" className={styles.login_btn}>Login</Link> */}
+                        {
+
+                            // <Link to="/login" className={styles.login_btn}>Login</Link>
+                            <button className={styles.login_btn} onClick={() => userHandler(checkStatus(userName))}>{checkStatus(userName)}</button>
+                        }
                     </li>
                 </ul>
                 <div className={styles.hamburger}>
