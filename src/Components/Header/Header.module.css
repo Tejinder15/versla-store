@@ -28,6 +28,7 @@ nav {
   border: none;
   padding: 0.5rem 1rem;
   background-color: var(--blue-place-order);
+  cursor: pointer;
   color: white;
 }
 

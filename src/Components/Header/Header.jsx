@@ -20,7 +20,7 @@ const Header = () => {
         authDispatch({type:"LOGOUT"});
     }
 
-    const userHandler = async (type) => {
+    const userHandler = (type) => {
         type === "Login" ? redirect("/login"): logoutHandler();
     }
     return (
@@ -43,10 +43,7 @@ const Header = () => {
                         </Link>
                     </li>
                     <li>
-                        {/* <Link to="/login" className={styles.login_btn}>Login</Link> */}
                         {
-
-                            // <Link to="/login" className={styles.login_btn}>Login</Link>
                             <button className={styles.login_btn} onClick={() => userHandler(checkStatus(userName))}>{checkStatus(userName)}</button>
                         }
                     </li>
