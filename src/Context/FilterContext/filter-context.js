@@ -5,7 +5,7 @@ import { filterReducer } from '../../Reducer/filter-reducer';
 const FilterContext = createContext(null);
 
 const FilterProvider = ({children}) => {
-    const [state,dispatch] = useReducer(filterReducer,{
+    const [filterstate,filterdispatch] = useReducer(filterReducer,{
         price: 5000,
         instock: true,
         gender: '',
@@ -15,7 +15,7 @@ const FilterProvider = ({children}) => {
     });
 
     return(
-        <FilterContext.Provider value={{state,dispatch}}>
+        <FilterContext.Provider value={{filterstate,filterdispatch}}>
             {children}
         </FilterContext.Provider>
     );

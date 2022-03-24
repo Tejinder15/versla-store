@@ -7,7 +7,7 @@ import { useFilter } from "../../Context/FilterContext/filter-context";
 import { sortData,priceFilter,ratingFilter,instockFilter, categoryFilter, genderFilter } from "../../Utils";
 import styles from "./Product.module.css";
 const Product = () => {
-    const {state} = useFilter();
+    const {filterstate} = useFilter();
     const [products,setProducts] = useState([]);
 
     const loadProducts = async () =>{
@@ -21,12 +21,12 @@ const Product = () => {
     }
 
     useEffect(()=>loadProducts(),[]);
-    const stockData = instockFilter(state,products);
-    const genderData = genderFilter(state,stockData);
-    const categoryData = categoryFilter(state,genderData);
-    const ratingData = ratingFilter(state,categoryData);
-    const priceFilteredData = priceFilter(state,ratingData);
-    const sortedData = sortData(state,priceFilteredData);
+    const stockData = instockFilter(filterstate,products);
+    const genderData = genderFilter(filterstate,stockData);
+    const categoryData = categoryFilter(filterstate,genderData);
+    const ratingData = ratingFilter(filterstate,categoryData);
+    const priceFilteredData = priceFilter(filterstate,ratingData);
+    const sortedData = sortData(filterstate,priceFilteredData);
     return (
         <>
         <Header />
