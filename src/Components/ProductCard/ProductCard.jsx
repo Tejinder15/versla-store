@@ -6,7 +6,8 @@ const ProductCard = (props) => {
                 <div className="product-image-container">
                     <img src={props.productImg} alt={props.productTitle} className="basic-card-image"/>
                 </div>
-                <span className="dot"><span className="material-icons-outlined ">favorite_border</span></span>
+                {/* <span className="dot"><span className="material-icons-outlined" onClick={()=>props.productToWishlist(props.productId)}>{props.productInWishlist(props.productId)==="remove"?"favorite":"favorite_border"}</span></span> */}
+                <span className="dot"><span className="material-icons-outlined" onClick={()=>props.productToWishlist(props.productId)}>favorite_border</span></span>
             </div>
             <div className="basic-card-details">
                 <div className="basic-card-secondary">
