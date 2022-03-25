@@ -6,6 +6,10 @@ header {
   z-index: 5;
 }
 
+.logo {
+  color: black;
+}
+
 nav {
   box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.3);
 }
