@@ -28,7 +28,7 @@ const Header = () => {
         <header>
             <nav className="navbar container">
                 <div className="logo">
-                    <h1>Versla</h1>
+                    <Link to="/"><h1 className={styles.logo}>Versla</h1></Link>
                 </div>
                 <ul className={styles.nav_links}>
                     <li><span className="material-icons-outlined">search</span></li>
