@@ -1,10 +1,9 @@
 import axios from "axios";
 import { useEffect } from "react";
 import Header from "../../Components/Header/Header";
-import ProductCard from "../../Components/ProductCard/ProductCard";
+import WishCard from "../../Components/WishCard/WishCard";
 import { useAuth } from "../../Context/AuthContext/auth-context";
 import { useWishlist } from "../../Context/WishContext/wishlist-context";
-import product from "../../Images/product.png";
 
 const Wishlist = () =>{
     const {wishlistState,wishlistDispatch} = useWishlist();
@@ -24,6 +23,18 @@ const Wishlist = () =>{
             console.error(error);
         }
     }
+    const removeFromWishlist = async (itemid) => {
+        try {
+            const response = await axios.delete(`/api/user/wishlist/${itemid}`,{headers:{authorization:token}});
+            if(response.status === 200){
+                wishlistDispatch({type:"Remove_from_Wishlist",payload:response.data.wishlist});
+            }else{
+                throw new Error();
+            }
+        }catch (error){
+            console.error(error);
+        }
+    }
 
     useEffect(()=> {
         getWishlistItems(token,wishlistDispatch);
@@ -37,10 +48,10 @@ const Wishlist = () =>{
                 {
                     wishlist.length !== 0 ? (
                             wishlist.map(item => (
-                                <ProductCard key={item._id}/>
+                                <WishCard key={item._id} productImg={item.image} productTitle={item.title} productPrice={item.price} productId={item._id} WishDel={removeFromWishlist}/>
                             ))
                     ):(
-                        <h2 className="center-text">Wishlist is Empty.☹</h2>
+                        <h2 className="center-text">Wishlist is Empty ☹.</h2>
                     )
                 }
             </div>

@@ -28,11 +28,6 @@ const Product = () => {
         }
     };
 
-    const checkInWishlist = (itemid) => {
-        const item = wishlist.find(item => item._id === itemid);
-        return item ? "remove" : "add";
-    }
-
     const addToWishlistHandler = async (itemid) => {
         if(token){
             const product = products.find(item => item._id === itemid);
@@ -40,7 +35,6 @@ const Product = () => {
                 const response = await axios.post("/api/user/wishlist",{product},{headers:{authorization:token}});
                 if(response.status === 201){
                     wishlistDispatch({type:"Add_To_Wishlist",payload:response.data.wishlist});
-                    console.log(response);
                 }else{
                     throw new Error();
                 }
@@ -53,7 +47,7 @@ const Product = () => {
         }
     }
 
-    const removerFromWishlist = async (itemid) => {
+    const removeFromWishlist = async (itemid) => {
         try {
             const response = await axios.delete(`/api/user/wishlist/${itemid}`,{headers:{authorization:token}});
             if(response.status === 200){
@@ -66,8 +60,13 @@ const Product = () => {
         }
     }
 
+    const checkInWishlist = (id) => {
+        const item = wishlist.find(item => item._id === id);
+        return item ? true : false;
+    }
+
     const checkWishlistAction = (itemid) => {
-        return checkInWishlist(itemid) === "remove" ? removerFromWishlist(itemid):addToWishlistHandler(itemid);
+        return checkInWishlist(itemid) ? removeFromWishlist(itemid):addToWishlistHandler(itemid);
     }
 
     useEffect(()=>loadProducts(),[]);
@@ -86,7 +85,7 @@ const Product = () => {
             <div className={`wishlist-container ${styles.products_container}`}>
                 {sortedData.length > 0?(
                 sortedData.map(item=>(
-                    <ProductCard productImg={item.image} productTitle={item.title} productPrice={item.price} key={item._id} productToWishlist={addToWishlistHandler} productId={item._id} productInWishlist={checkInWishlist}/>
+                    <ProductCard productImg={item.image} productTitle={item.title} productPrice={item.price} key={item._id} productInWishlist={checkInWishlist} productId={item._id} productWishlistAction={checkWishlistAction}/>
                 ))):(
                     <h2>No Products Found</h2>
                 )}
