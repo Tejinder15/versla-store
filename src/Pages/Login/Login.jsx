@@ -31,7 +31,6 @@ const Login = () => {
         localStorage.setItem("token", response.data.encodedToken);
         localStorage.setItem("user", JSON.stringify(response.data.foundUser));
         navigate("/");
-        alert("Logged in");
       } else {
         throw new Error();
       }
