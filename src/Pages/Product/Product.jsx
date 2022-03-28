@@ -16,11 +16,14 @@ import styles from "./Product.module.css";
 import { useWishlist } from "../../Context/WishContext/wishlist-context";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext/auth-context";
+import { useCart } from "../../Context/CartContext/cart-context";
 const Product = () => {
   const { filterstate } = useFilter();
   const [products, setProducts] = useState([]);
   const { wishlistState, wishlistDispatch } = useWishlist();
   const { wishlist } = wishlistState;
+  const { cartState, cartDispatch } = useCart();
+  const { cart } = cartState;
   const navigate = useNavigate();
   const { authState } = useAuth();
   const { token } = authState;
@@ -84,6 +87,28 @@ const Product = () => {
     return item ? true : false;
   };
 
+  const addToCart = async (itemid) => {
+    if (token) {
+      const product = products.find((item) => item._id === itemid);
+      try {
+        const response = await axios.post(
+          "/api/user/cart",
+          { product },
+          { headers: { authorization: token } }
+        );
+        if (response.status === 201) {
+          cartDispatch({ type: "Add_to_cart", payload: response.data.cart });
+        } else {
+          throw new Error();
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      navigate("/login");
+    }
+  };
+
   const checkWishlistAction = (itemid) => {
     return checkInWishlist(itemid)
       ? removeFromWishlist(itemid)
@@ -115,6 +140,7 @@ const Product = () => {
                   productWishlistAction={checkWishlistAction}
                   removeFromWishlist={removeFromWishlist}
                   addToWishlistHandler={addToWishlistHandler}
+                  addToCart={addToCart}
                 />
               ))
             ) : (

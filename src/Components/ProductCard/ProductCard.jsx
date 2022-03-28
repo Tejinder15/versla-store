@@ -48,7 +48,12 @@ const ProductCard = (props) => {
           </div>
         </div>
         <div className="basic-card-actions">
-          <button className="move-to-cart">Add to Cart</button>
+          <button
+            className="move-to-cart"
+            onClick={() => props.addToCart(props.productId)}
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </>

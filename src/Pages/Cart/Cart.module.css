@@ -5,5 +5,27 @@
 .mycart_container {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
+}
+
+.item_container {
+  width: 500px;
+}
+
+.pricecard_container {
+  width: 420px;
+}
+
+.prod {
+  margin-bottom: 1.6rem;
+}
+
+@media only screen and (max-width: 954px) {
+  .item_container {
+    margin: 0 auto;
+  }
+  .pricecard_container {
+    margin: 0 auto;
+    margin-bottom: 2rem;
+  }
 }
