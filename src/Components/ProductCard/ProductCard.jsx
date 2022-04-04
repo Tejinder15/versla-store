@@ -18,7 +18,7 @@ const ProductCard = (props) => {
             <img
               src={props.productImg}
               alt={props.productTitle}
-              className="basic-card-image"
+              className="basic-card-image productcard_image"
             />
           </div>
           <span className="dot">
