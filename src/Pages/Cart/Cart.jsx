@@ -83,7 +83,7 @@ const Cart = () => {
                             <button
                               className="prod-quantity-decrease"
                               onClick={() =>
-                                cartQuantity < 1
+                                cartQuantity <= 1
                                   ? removeFromCartHandler(item._id)
                                   : decreaseQuantityHandler(item._id)
                               }
