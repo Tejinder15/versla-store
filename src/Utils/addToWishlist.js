@@ -9,10 +9,9 @@ const addToWishlist = async (product,token,wishlistDispatch) => {
           );
           if (response.status === 201) {
         wishlistDispatch({
-          type: "Add_To_Wishlist",
+          type: "Add_to_Wishlist",
           payload: response.data.wishlist,
         });
-        console.log(response);
         } else {
           throw new Error();
         }
