@@ -10,7 +10,7 @@ const PriceCard = (props) => {
             Price &#40;
             {`${props.noofitems}${props.noofitems > 1 ? "items" : "item"}`}&#41;
           </span>
-          <span className="price">&#8377;{props.totalprice}</span>
+          <span className="price">&#8377;{props.itemsPrice}</span>
         </div>
         <div className={styles.price_detail_item}>
           <span>Discount</span>
@@ -27,15 +27,13 @@ const PriceCard = (props) => {
       <div className={styles.total_amount_container}>
         <span className={styles.total_amount_title}>Total Amount</span>
         <span className={`${styles.total_amount} price`}>
-          &#8377;{props.totalprice + 120 - 500}
+          &#8377;{props.totalp}
         </span>
       </div>
       <hr />
       <p>
         You will save{" "}
-        <span className="price">
-          &#8377;{props.totalprice - `${props.totalprice + 120 - 500}`}
-        </span>{" "}
+        <span className="price">&#8377;{props.itemsPrice - props.totalp}</span>{" "}
         on this order.
       </p>
       <button className={styles.place_order}>Place Order</button>
