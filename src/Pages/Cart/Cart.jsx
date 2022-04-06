@@ -4,14 +4,19 @@ import Header from "../../Components/Header/Header";
 import PriceCard from "../../Components/PriceCard/PriceCard";
 import { useAuth } from "../../Context/AuthContext/auth-context";
 import { useCart } from "../../Context/CartContext/cart-context";
+import {
+  cartBill,
+  increaseUpdate,
+  removeFromCart,
+  decreaseUpdate,
+} from "../../Utils";
 import styles from "./Cart.module.css";
 const Cart = () => {
   const { cartState, cartDispatch } = useCart();
   const { authState } = useAuth();
   const { token } = authState;
   const { cart } = cartState;
-  const [totalprice, setTotalPrice] = useState();
-  const [quantity, setQuantity] = useState(1);
+  const { cartQuantity, itemsPrice, totalPrice } = cartBill(cart);
 
   const getCartItems = async () => {
     try {
@@ -28,29 +33,19 @@ const Cart = () => {
     }
   };
 
-  const removeFromCart = async (itemid) => {
-    try {
-      const response = await axios.delete(`/api/user/cart/${itemid}`, {
-        headers: { authorization: token },
-      });
-      if (response.status === 200) {
-        cartDispatch({ type: "Remove_from_cart", payload: response.data.cart });
-      } else {
-        throw new Error();
-      }
-    } catch (error) {
-      console.error(error);
-    }
+  const removeFromCartHandler = async (itemid) => {
+    removeFromCart(itemid, token, cartDispatch);
   };
 
   useEffect(() => getCartItems(), []);
-  useEffect(
-    () =>
-      setTotalPrice(
-        cart.reduce((acc, curr) => acc + Number(curr.price * curr.qty), 0)
-      ),
-    [cart]
-  );
+
+  const increaseQuantityHandler = (itemid) => {
+    increaseUpdate(itemid, token, cartDispatch);
+  };
+
+  const decreaseQuantityHandler = (itemid) => {
+    decreaseUpdate(itemid, token, cartDispatch);
+  };
   return (
     <>
       <Header />
@@ -79,22 +74,32 @@ const Cart = () => {
                           &#8377;{item.price}
                         </span>
                         <span className="product-discount-price price">
-                          &#8377;4000
+                          &#8377;{item.price * 2}
                         </span>
                         <p className="gray-text">50% off</p>
                         <div className="product-quantity-container">
                           <span>Quantity:</span>
                           <div className="product-quantity-handle">
-                            <button className="prod-quantity-decrease" disabled>
+                            <button
+                              className="prod-quantity-decrease"
+                              onClick={() =>
+                                cartQuantity < 1
+                                  ? removeFromCartHandler(item._id)
+                                  : decreaseQuantityHandler(item._id)
+                              }
+                            >
                               -
                             </button>
                             <input
                               type="text"
                               autoComplete="off"
                               className="prod-quantity"
-                              defaultValue={quantity}
+                              value={item.qty}
                             />
-                            <button className="prod-quantity-increase" disabled>
+                            <button
+                              className="prod-quantity-increase"
+                              onClick={() => increaseQuantityHandler(item._id)}
+                            >
                               +
                             </button>
                           </div>
@@ -103,7 +108,7 @@ const Cart = () => {
                       <div className="product-card-actions">
                         <button
                           className="prod-rfc"
-                          onClick={() => removeFromCart(item._id)}
+                          onClick={() => removeFromCartHandler(item._id)}
                         >
                           Remove From Cart
                         </button>
@@ -118,7 +123,11 @@ const Cart = () => {
           </div>
           <div className={styles.pricecard_container}>
             {cart.length !== 0 ? (
-              <PriceCard totalprice={totalprice} noofitems={cart.length} />
+              <PriceCard
+                totalp={totalPrice}
+                itemsPrice={itemsPrice}
+                noofitems={cart.length}
+              />
             ) : (
               ""
             )}
