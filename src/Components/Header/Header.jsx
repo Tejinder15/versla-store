@@ -8,8 +8,9 @@ import { useCart } from "../../Context/CartContext/cart-context";
 
 const Header = () => {
   const { authState, authDispatch } = useAuth();
-  const { wishlistState } = useWishlist();
-  const { wishlist } = wishlistState;
+  const {
+    wishlistState: { wishlist },
+  } = useWishlist();
   const { cartState, cartDispatch } = useCart();
   const { cart } = cartState;
   const userName = authState.user;
@@ -30,12 +31,6 @@ const Header = () => {
     type === "Login" ? redirect("/login") : logoutHandler();
   };
 
-  const notifyHandler = () => {
-    return wishlist.length > 0 ? true : false;
-  };
-
-  const [notifywish, serNotifyWish] = useState(notifyHandler);
-
   return (
     <>
       <header>
@@ -55,15 +50,15 @@ const Header = () => {
               </Link>
               {wishlist.length > 0 ? (
                 <div className={styles.notify_dot}></div>
-              ) : (
-                ""
-              )}
+              ) : null}
             </li>
             <li>
               <Link to="/cart" className={styles.nav_item}>
                 <span className="material-icons-outlined">shopping_bag</span>
               </Link>
-              {cart.length > 0 ? <div className={styles.notify_dot}></div> : ""}
+              {cart.length > 0 ? (
+                <div className={styles.notify_dot}></div>
+              ) : null}
             </li>
             <li>
               {
