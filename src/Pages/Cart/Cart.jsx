@@ -95,6 +95,7 @@ const Cart = () => {
                               autoComplete="off"
                               className="prod-quantity"
                               value={item.qty}
+                              readOnly
                             />
                             <button
                               className="prod-quantity-increase"
