@@ -6,6 +6,8 @@ const cartReducer = (state,action) => {
             return {...state,cart:action.payload};
         case "Remove_from_cart":
             return {...state,cart:action.payload};
+        case "Update_cart":
+            return {...state,cart:action.payload};
         default:
             return state;
     }
