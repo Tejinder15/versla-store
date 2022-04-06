@@ -3,11 +3,16 @@ import { useEffect } from "react";
 import Header from "../../Components/Header/Header";
 import WishCard from "../../Components/WishCard/WishCard";
 import { useAuth } from "../../Context/AuthContext/auth-context";
+import { useCart } from "../../Context/CartContext/cart-context";
 import { useWishlist } from "../../Context/WishContext/wishlist-context";
-import { removeFromWishlist } from "../../Utils";
+import { removeFromWishlist, addToCart } from "../../Utils";
 
 const Wishlist = () => {
   const { wishlistState, wishlistDispatch } = useWishlist();
+  const {
+    cartState: { cart },
+    cartDispatch,
+  } = useCart();
   const { authState } = useAuth();
   const { token } = authState;
   const { wishlist } = wishlistState;
@@ -29,6 +34,10 @@ const Wishlist = () => {
     removeFromWishlist(itemid, token, wishlistDispatch);
   };
 
+  const addToCartHandler = (product) => {
+    addToCart(product, token, cartDispatch);
+  };
+
   useEffect(() => getWishlistItems(), []);
   return (
     <>
@@ -40,10 +49,8 @@ const Wishlist = () => {
             wishlist.map((item) => (
               <WishCard
                 key={item._id}
-                productImg={item.image}
-                productTitle={item.title}
-                productPrice={item.price}
-                productId={item._id}
+                addToCartH={addToCartHandler}
+                productDetail={item}
                 WishDel={removeFromWishlistHandler}
               />
             ))
