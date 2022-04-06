@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const removeFromWishlist = async (itemid,token,wishlistDispatch,setIsInWishlist) => {
+const removeFromWishlist = async (itemid,token,wishlistDispatch) => {
 try {
       const response = await axios.delete(`/api/user/wishlist/${itemid}`, {
         headers: { authorization: token },
@@ -10,7 +10,6 @@ try {
           type: "Remove_from_Wishlist",
           payload: response.data.wishlist,
         });
-        setIsInWishlist(false);
       } else {
         throw new Error();
       }
