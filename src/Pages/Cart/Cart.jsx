@@ -4,15 +4,22 @@ import Header from "../../Components/Header/Header";
 import PriceCard from "../../Components/PriceCard/PriceCard";
 import { useAuth } from "../../Context/AuthContext/auth-context";
 import { useCart } from "../../Context/CartContext/cart-context";
+import { useWishlist } from "../../Context/WishContext/wishlist-context";
 import {
   cartBill,
   increaseUpdate,
   removeFromCart,
   decreaseUpdate,
+  removeFromWishlist,
+  addToWishlist,
 } from "../../Utils";
 import styles from "./Cart.module.css";
 const Cart = () => {
   const { cartState, cartDispatch } = useCart();
+  const {
+    wishlistState: { wishlist },
+    wishlistDispatch,
+  } = useWishlist();
   const { authState } = useAuth();
   const { token } = authState;
   const { cart } = cartState;
@@ -46,6 +53,14 @@ const Cart = () => {
   const decreaseQuantityHandler = (itemid) => {
     decreaseUpdate(itemid, token, cartDispatch);
   };
+
+  const addToWishlistHandler = (product) => {
+    addToWishlist(product, token, wishlistDispatch);
+  };
+
+  const removeFromWishlistHandler = (itemid) => {
+    removeFromWishlist(itemid, token, wishlistDispatch);
+  };
   return (
     <>
       <Header />
@@ -62,8 +77,22 @@ const Cart = () => {
                       alt="photo"
                       className="product-image"
                     />
-                    <span className="material-icons-outlined dot">
-                      favorite_border
+                    <span className="dot">
+                      {wishlist.some((wish) => wish._id === item._id) ? (
+                        <span
+                          className={"material-icons-outlined heart-filled"}
+                          onClick={() => removeFromWishlistHandler(item._id)}
+                        >
+                          favorite
+                        </span>
+                      ) : (
+                        <span
+                          className={"material-icons-outlined"}
+                          onClick={() => addToWishlistHandler(item)}
+                        >
+                          favorite_border
+                        </span>
+                      )}
                     </span>
                   </div>
                   <div className="product-card-container">
