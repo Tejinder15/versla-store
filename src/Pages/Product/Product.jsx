@@ -4,6 +4,7 @@ import Filter from "../../Components/Filter/Filter";
 import Header from "../../Components/Header/Header";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import { useFilter } from "../../Context/FilterContext/filter-context";
+import { addToCart } from "../../Utils/";
 import {
   sortData,
   priceFilter,
@@ -17,11 +18,16 @@ import { useWishlist } from "../../Context/WishContext/wishlist-context";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext/auth-context";
 import { useCart } from "../../Context/CartContext/cart-context";
+import { addToWishlist, removeFromWishlist } from "../../Utils/";
+import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
 const Product = () => {
   const { filterstate } = useFilter();
   const [products, setProducts] = useState([]);
-  const { wishlistState, wishlistDispatch } = useWishlist();
-  const { wishlist } = wishlistState;
+  const [isLoading, setIsLoading] = useState(false);
+  const {
+    wishlistState: { wishlist },
+    wishlistDispatch,
+  } = useWishlist();
   const { cartState, cartDispatch } = useCart();
   const { cart } = cartState;
   const navigate = useNavigate();
@@ -29,90 +35,27 @@ const Product = () => {
   const { token } = authState;
 
   const loadProducts = async () => {
+    setIsLoading(true);
     try {
       const response = await axios.get("/api/products");
       setProducts(response.data.products);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
     }
   };
 
-  const addToWishlistHandler = async (itemid, setIsInWishlist) => {
-    if (token) {
-      const product = products.find((item) => item._id === itemid);
-      try {
-        const response = await axios.post(
-          "/api/user/wishlist",
-          { product },
-          { headers: { authorization: token } }
-        );
-        if (response.status === 201) {
-          wishlistDispatch({
-            type: "Add_To_Wishlist",
-            payload: response.data.wishlist,
-          });
-          setIsInWishlist(true);
-        } else {
-          throw new Error();
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    } else {
-      navigate("/login");
-    }
+  const addToCartHandler = (product) => {
+    addToCart(product, token, cartDispatch);
   };
 
-  const removeFromWishlist = async (itemid, setIsInWishlist) => {
-    try {
-      const response = await axios.delete(`/api/user/wishlist/${itemid}`, {
-        headers: { authorization: token },
-      });
-      if (response.status === 200) {
-        wishlistDispatch({
-          type: "Remove_from_Wishlist",
-          payload: response.data.wishlist,
-        });
-        setIsInWishlist(false);
-      } else {
-        throw new Error();
-      }
-    } catch (error) {
-      console.error(error);
-    }
+  const addToWishlistHandler = (product) => {
+    addToWishlist(product, token, wishlistDispatch);
   };
 
-  const checkInWishlist = (id) => {
-    const item = wishlist.find((item) => item._id === id);
-    return item ? true : false;
-  };
-
-  const addToCart = async (itemid) => {
-    if (token) {
-      const product = products.find((item) => item._id === itemid);
-      try {
-        const response = await axios.post(
-          "/api/user/cart",
-          { product },
-          { headers: { authorization: token } }
-        );
-        if (response.status === 201) {
-          cartDispatch({ type: "Add_to_cart", payload: response.data.cart });
-        } else {
-          throw new Error();
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    } else {
-      navigate("/login");
-    }
-  };
-
-  const checkWishlistAction = (itemid) => {
-    return checkInWishlist(itemid)
-      ? removeFromWishlist(itemid)
-      : addToWishlistHandler(itemid);
+  const removeFromWishlistHandler = (itemid) => {
+    removeFromWishlist(itemid, token, wishlistDispatch);
   };
 
   useEffect(() => loadProducts(), []);
@@ -129,18 +72,16 @@ const Product = () => {
         <Filter />
         <main>
           <div className={`wishlist-container ${styles.products_container}`}>
-            {sortedData.length > 0 ? (
+            {isLoading ? (
+              <LoadingSpinner />
+            ) : sortedData.length > 0 ? (
               sortedData.map((item) => (
                 <ProductCard
-                  productImg={item.image}
-                  productTitle={item.title}
-                  productPrice={item.price}
                   key={item._id}
-                  productId={item._id}
-                  productWishlistAction={checkWishlistAction}
-                  removeFromWishlist={removeFromWishlist}
+                  addToCart={addToCartHandler}
+                  productDetail={item}
                   addToWishlistHandler={addToWishlistHandler}
-                  addToCart={addToCart}
+                  removeFromWishlistHandler={removeFromWishlistHandler}
                 />
               ))
             ) : (

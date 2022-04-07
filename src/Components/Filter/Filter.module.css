@@ -45,8 +45,39 @@ input[type="range"] {
   width: 100%;
 }
 
+.filter_btn {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #333;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  font-size: 1.2rem;
+  display: none;
+}
+
 @media only screen and (max-width: 486px) {
   .filter_panel {
-    display: none;
+    top: 56px;
+    max-width: 100%;
+    max-height: calc(100vh - 90px);
+    width: 98%;
+    transform: translateY(100%);
+    transition: 0.3s ease-in-out;
+    z-index: 2;
+  }
+
+  .show_filter {
+    transform: translateY(0%);
+    /* display: initial; */
+  }
+
+  .filter_btn{
+    display: block;
   }
 }

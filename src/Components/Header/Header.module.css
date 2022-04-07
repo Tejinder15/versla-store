@@ -36,53 +36,10 @@ nav {
   color: white;
 }
 
-.hamburger > div {
-  width: 25px;
-  height: 3px;
-  background-color: #000;
-  margin: 5px;
-  transition: all 0.3s ease-in-out;
-}
-
-.hamburger {
-  display: none;
-}
-@media screen and (max-width: 786px) {
-  .hamburger {
-    display: block;
-  }
-}
-
-@keyframes navLinkFadeIn {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0px);
-  }
-}
-
-@keyframes navLinkFadeOut {
-  from {
-    opacity: 1;
-    transform: translateX(0px);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-}
-
-.toggle .line1 {
-  transform: rotate(-48deg) translate(-5px, 5px);
-}
-
-.toggle .line2 {
-  opacity: 0;
-}
-
-.toggle .line3 {
-  transform: rotate(+48deg) translate(-6px, -6px);
+.notify_dot{
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--blob-hover2-color);
+  margin: 0 auto;
 }

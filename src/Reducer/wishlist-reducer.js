@@ -6,8 +6,6 @@ const wishlistReducer = (state,action) => {
             return {...state,wishlist:action.payload};
         case "Remove_from_Wishlist":
             return {...state,wishlist:action.payload};
-        case "Empty_Wishlist":
-            return {...state,wishlist:[]};
         default:
             return state;
     }

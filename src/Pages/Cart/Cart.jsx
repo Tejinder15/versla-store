@@ -4,14 +4,26 @@ import Header from "../../Components/Header/Header";
 import PriceCard from "../../Components/PriceCard/PriceCard";
 import { useAuth } from "../../Context/AuthContext/auth-context";
 import { useCart } from "../../Context/CartContext/cart-context";
+import { useWishlist } from "../../Context/WishContext/wishlist-context";
+import {
+  cartBill,
+  increaseUpdate,
+  removeFromCart,
+  decreaseUpdate,
+  removeFromWishlist,
+  addToWishlist,
+} from "../../Utils";
 import styles from "./Cart.module.css";
 const Cart = () => {
   const { cartState, cartDispatch } = useCart();
+  const {
+    wishlistState: { wishlist },
+    wishlistDispatch,
+  } = useWishlist();
   const { authState } = useAuth();
   const { token } = authState;
   const { cart } = cartState;
-  const [totalprice, setTotalPrice] = useState();
-  const [quantity, setQuantity] = useState(1);
+  const { cartQuantity, itemsPrice, totalPrice } = cartBill(cart);
 
   const getCartItems = async () => {
     try {
@@ -28,29 +40,27 @@ const Cart = () => {
     }
   };
 
-  const removeFromCart = async (itemid) => {
-    try {
-      const response = await axios.delete(`/api/user/cart/${itemid}`, {
-        headers: { authorization: token },
-      });
-      if (response.status === 200) {
-        cartDispatch({ type: "Remove_from_cart", payload: response.data.cart });
-      } else {
-        throw new Error();
-      }
-    } catch (error) {
-      console.error(error);
-    }
+  const removeFromCartHandler = async (itemid) => {
+    removeFromCart(itemid, token, cartDispatch);
   };
 
   useEffect(() => getCartItems(), []);
-  useEffect(
-    () =>
-      setTotalPrice(
-        cart.reduce((acc, curr) => acc + Number(curr.price * curr.qty), 0)
-      ),
-    [cart]
-  );
+
+  const increaseQuantityHandler = (itemid) => {
+    increaseUpdate(itemid, token, cartDispatch);
+  };
+
+  const decreaseQuantityHandler = (itemid) => {
+    decreaseUpdate(itemid, token, cartDispatch);
+  };
+
+  const addToWishlistHandler = (product) => {
+    addToWishlist(product, token, wishlistDispatch);
+  };
+
+  const removeFromWishlistHandler = (itemid) => {
+    removeFromWishlist(itemid, token, wishlistDispatch);
+  };
   return (
     <>
       <Header />
@@ -67,8 +77,22 @@ const Cart = () => {
                       alt="photo"
                       className="product-image"
                     />
-                    <span className="material-icons-outlined dot">
-                      favorite_border
+                    <span className="dot">
+                      {wishlist.some((wish) => wish._id === item._id) ? (
+                        <span
+                          className={"material-icons-outlined heart-filled"}
+                          onClick={() => removeFromWishlistHandler(item._id)}
+                        >
+                          favorite
+                        </span>
+                      ) : (
+                        <span
+                          className={"material-icons-outlined"}
+                          onClick={() => addToWishlistHandler(item)}
+                        >
+                          favorite_border
+                        </span>
+                      )}
                     </span>
                   </div>
                   <div className="product-card-container">
@@ -79,22 +103,33 @@ const Cart = () => {
                           &#8377;{item.price}
                         </span>
                         <span className="product-discount-price price">
-                          &#8377;4000
+                          &#8377;{item.price * 2}
                         </span>
                         <p className="gray-text">50% off</p>
                         <div className="product-quantity-container">
                           <span>Quantity:</span>
                           <div className="product-quantity-handle">
-                            <button className="prod-quantity-decrease" disabled>
+                            <button
+                              className="prod-quantity-decrease"
+                              onClick={() =>
+                                cartQuantity <= 1
+                                  ? removeFromCartHandler(item._id)
+                                  : decreaseQuantityHandler(item._id)
+                              }
+                            >
                               -
                             </button>
                             <input
                               type="text"
                               autoComplete="off"
                               className="prod-quantity"
-                              defaultValue={quantity}
+                              value={item.qty}
+                              readOnly
                             />
-                            <button className="prod-quantity-increase" disabled>
+                            <button
+                              className="prod-quantity-increase"
+                              onClick={() => increaseQuantityHandler(item._id)}
+                            >
                               +
                             </button>
                           </div>
@@ -103,7 +138,7 @@ const Cart = () => {
                       <div className="product-card-actions">
                         <button
                           className="prod-rfc"
-                          onClick={() => removeFromCart(item._id)}
+                          onClick={() => removeFromCartHandler(item._id)}
                         >
                           Remove From Cart
                         </button>
@@ -118,7 +153,11 @@ const Cart = () => {
           </div>
           <div className={styles.pricecard_container}>
             {cart.length !== 0 ? (
-              <PriceCard totalprice={totalprice} noofitems={cart.length} />
+              <PriceCard
+                totalp={totalPrice}
+                itemsPrice={itemsPrice}
+                noofitems={cart.length}
+              />
             ) : (
               ""
             )}

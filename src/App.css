@@ -13,6 +13,7 @@
 
 .textfield,
 input[type="password"] {
+  min-width: 100px !important;
   width: 100%;
 }
 
@@ -157,6 +158,10 @@ input[type="password"] {
 
 .product-card {
   align-self: flex-start;
+}
+
+.productcard_image{
+  width: 100%;
 }
 
 .heart-filled {

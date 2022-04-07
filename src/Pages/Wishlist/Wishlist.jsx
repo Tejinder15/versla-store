@@ -3,52 +3,42 @@ import { useEffect } from "react";
 import Header from "../../Components/Header/Header";
 import WishCard from "../../Components/WishCard/WishCard";
 import { useAuth } from "../../Context/AuthContext/auth-context";
+import { useCart } from "../../Context/CartContext/cart-context";
 import { useWishlist } from "../../Context/WishContext/wishlist-context";
+import { removeFromWishlist, addToCart } from "../../Utils";
 
 const Wishlist = () => {
   const { wishlistState, wishlistDispatch } = useWishlist();
+  const {
+    cartState: { cart },
+    cartDispatch,
+  } = useCart();
   const { authState } = useAuth();
   const { token } = authState;
   const { wishlist } = wishlistState;
 
-  const getWishlistItems = async (token, wishlistDispatch) => {
+  const getWishlistItems = async () => {
     try {
       const response = await axios.get("/api/user/wishlist", {
         headers: { authorization: token },
       });
-      if (response.status === 200) {
-        wishlistDispatch({
-          type: "Get_Wishlist",
-          payload: response.data.wishlist,
-        });
-      } else {
-        throw new Error();
-      }
+      wishlistDispatch({
+        type: "Get_Wishlist",
+        payload: response.data.wishlist,
+      });
     } catch (error) {
       console.error(error);
     }
   };
-  const removeFromWishlist = async (itemid) => {
-    try {
-      const response = await axios.delete(`/api/user/wishlist/${itemid}`, {
-        headers: { authorization: token },
-      });
-      if (response.status === 200) {
-        wishlistDispatch({
-          type: "Remove_from_Wishlist",
-          payload: response.data.wishlist,
-        });
-      } else {
-        throw new Error();
-      }
-    } catch (error) {
-      console.error(error);
-    }
+  const removeFromWishlistHandler = async (itemid) => {
+    removeFromWishlist(itemid, token, wishlistDispatch);
   };
 
-  useEffect(() => {
-    getWishlistItems(token, wishlistDispatch);
-  }, []);
+  const addToCartHandler = (product) => {
+    addToCart(product, token, cartDispatch);
+  };
+
+  useEffect(() => getWishlistItems(), []);
   return (
     <>
       <Header />
@@ -59,11 +49,9 @@ const Wishlist = () => {
             wishlist.map((item) => (
               <WishCard
                 key={item._id}
-                productImg={item.image}
-                productTitle={item.title}
-                productPrice={item.price}
-                productId={item._id}
-                WishDel={removeFromWishlist}
+                addToCartH={addToCartHandler}
+                productDetail={item}
+                WishDel={removeFromWishlistHandler}
               />
             ))
           ) : (
