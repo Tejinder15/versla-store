@@ -73,13 +73,6 @@ const Login = () => {
               autoComplete="off"
             />
           </div>
-          <div className="choice-group">
-            <input type="checkbox" name="remember" id="remember" />
-            <label htmlFor="remember" className="remember">
-              Remember me
-            </label>
-            <a className="forgot-pass">Forgot your Password?</a>
-          </div>
           <button
             type="submit"
             className="btn btn-primary"

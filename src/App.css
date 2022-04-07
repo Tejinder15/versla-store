@@ -13,6 +13,7 @@
 
 .textfield,
 input[type="password"] {
+  min-width: 100px !important;
   width: 100%;
 }
 
