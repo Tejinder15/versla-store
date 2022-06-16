@@ -47,7 +47,7 @@ const Login = () => {
     <>
       <div className="auth-container">
         <h2 className="form-heading center-text">Login</h2>
-        <form action="" method="post">
+        <form onSubmit={loginHandler}>
           <div className="input-group">
             <label htmlFor="email">Email address</label>
             <input
@@ -73,11 +73,7 @@ const Login = () => {
               autoComplete="off"
             />
           </div>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={loginHandler}
-          >
+          <button type="submit" className="btn btn-primary">
             Login
           </button>
           <button
