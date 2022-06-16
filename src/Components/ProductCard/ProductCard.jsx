@@ -1,9 +1,11 @@
-import { useState } from "react";
 import { useAuth } from "../../Context/AuthContext/auth-context";
 import { useCart } from "../../Context/CartContext/cart-context";
 import { useWishlist } from "../../Context/WishContext/wishlist-context";
 import { useNavigate } from "react-router-dom";
 const ProductCard = (props) => {
+  const {
+    authState: { token },
+  } = useAuth();
   const {
     wishlistState: { wishlist },
     wishlistDispatch,
@@ -36,7 +38,11 @@ const ProductCard = (props) => {
             ) : (
               <span
                 className={"material-icons-outlined"}
-                onClick={() => props.addToWishlistHandler(props.productDetail)}
+                onClick={() => {
+                  token
+                    ? props.addToWishlistHandler(props.productDetail)
+                    : navigate("/login");
+                }}
               >
                 favorite_border
               </span>
@@ -61,7 +67,11 @@ const ProductCard = (props) => {
           ) : (
             <button
               className="move-to-cart"
-              onClick={() => props.addToCart(props.productDetail)}
+              onClick={() => {
+                token
+                  ? props.addToCart(props.productDetail)
+                  : navigate("/login");
+              }}
             >
               Add to Cart
             </button>
