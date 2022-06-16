@@ -36,10 +36,26 @@ nav {
   color: white;
 }
 
-.notify_dot{
+.dot {
+  width: 15px;
+  height: 15px;
+  padding: 4px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: var(--blob-hover2-color);
+  top: -2px;
+  right: -6px;
+  font-size: 12px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .notify_dot{
   width: 5px;
   height: 5px;
   border-radius: 50%;
   background-color: var(--blob-hover2-color);
   margin: 0 auto;
-}
+} */
