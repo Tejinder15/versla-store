@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import Header from "../../Components/Header/Header";
-import WishCard from "../../Components/WishCard/WishCard";
+import ProductCard from "../../Components/ProductCard/ProductCard";
 import { useAuth } from "../../Context/AuthContext/auth-context";
 import { useCart } from "../../Context/CartContext/cart-context";
 import { useWishlist } from "../../Context/WishContext/wishlist-context";
@@ -9,10 +9,7 @@ import { removeFromWishlist, addToCart } from "../../Utils";
 
 const Wishlist = () => {
   const { wishlistState, wishlistDispatch } = useWishlist();
-  const {
-    cartState: { cart },
-    cartDispatch,
-  } = useCart();
+  const { cartDispatch } = useCart();
   const { authState } = useAuth();
   const { token } = authState;
   const { wishlist } = wishlistState;
@@ -47,11 +44,12 @@ const Wishlist = () => {
         <div className="wishlist-container">
           {wishlist.length !== 0 ? (
             wishlist.map((item) => (
-              <WishCard
+              <ProductCard
                 key={item._id}
-                addToCartH={addToCartHandler}
+                addToCart={addToCartHandler}
                 productDetail={item}
-                WishDel={removeFromWishlistHandler}
+                removeFromWishlistHandler={removeFromWishlistHandler}
+                addToCartHandler={addToCartHandler}
               />
             ))
           ) : (

@@ -166,6 +166,10 @@ input[type="password"] {
   height: 22rem;
 }
 
+.read_only_rating {
+  background-color: var(--blob-hover2-color);
+}
+
 .heart-filled {
   color: var(--red-orange-test);
 }

@@ -8,7 +8,6 @@ const ProductCard = (props) => {
   } = useAuth();
   const {
     wishlistState: { wishlist },
-    wishlistDispatch,
   } = useWishlist();
   const {
     cartState: { cart },
@@ -51,12 +50,18 @@ const ProductCard = (props) => {
         </div>
         <div className="basic-card-details">
           <div className="basic-card-secondary">
-            <p className="product-title center-text">
-              {props.productDetail.title}
-            </p>
-            <h3 className="product-price center-text">
-              &#8377;{props.productDetail.price}
-            </h3>
+            <p className="product-title">{props.productDetail.title}</p>
+            <div className="product-price-rating">
+              <div className={styles.product_price_container}>
+                <span className="product-price">
+                  &#8377;{props.productDetail.price}
+                </span>
+              </div>
+              <div className="read_only_rating read-only-rating">
+                <span className="small">{props.productDetail.rating}</span>
+                <span className="material-icons-round">star_border</span>
+              </div>
+            </div>
           </div>
         </div>
         <div className="basic-card-actions">
