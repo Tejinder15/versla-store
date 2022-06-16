@@ -14,7 +14,7 @@ const WishCard = (props) => {
             <img
               src={props.productDetail.image}
               alt={props.productDetail.title}
-              className="basic-card-image"
+              className="basic-card-image productcard_image"
             />
           </div>
           <span className="dot heart-filled">
