@@ -162,6 +162,8 @@ input[type="password"] {
 
 .productcard_image {
   max-width: 100%;
+  object-fit: cover;
+  height: 22rem;
 }
 
 .heart-filled {
