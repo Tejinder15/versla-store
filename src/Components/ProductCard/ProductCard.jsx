@@ -52,11 +52,9 @@ const ProductCard = (props) => {
           <div className="basic-card-secondary">
             <p className="product-title">{props.productDetail.title}</p>
             <div className="product-price-rating">
-              <div className={styles.product_price_container}>
-                <span className="product-price">
-                  &#8377;{props.productDetail.price}
-                </span>
-              </div>
+              <span className="product-price">
+                &#8377;{props.productDetail.price}
+              </span>
               <div className="read_only_rating read-only-rating">
                 <span className="small">{props.productDetail.rating}</span>
                 <span className="material-icons-round">star_border</span>
