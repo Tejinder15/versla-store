@@ -26,6 +26,6 @@
 @media only screen and (min-width: 768px) {
   .basic_card:hover {
     z-index: 3;
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 }

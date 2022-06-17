@@ -160,8 +160,14 @@ input[type="password"] {
   align-self: flex-start;
 }
 
-.productcard_image{
-  width: 100%;
+.productcard_image {
+  max-width: 100%;
+  object-fit: cover;
+  height: 22rem;
+}
+
+.read_only_rating {
+  background-color: var(--blob-hover2-color);
 }
 
 .heart-filled {

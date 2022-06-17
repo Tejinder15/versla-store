@@ -23,7 +23,7 @@ const Cart = () => {
   const { authState } = useAuth();
   const { token } = authState;
   const { cart } = cartState;
-  const { cartQuantity, itemsPrice, totalPrice } = cartBill(cart);
+  const { itemsPrice, totalPrice } = cartBill(cart);
 
   const getCartItems = async () => {
     try {
@@ -61,6 +61,7 @@ const Cart = () => {
   const removeFromWishlistHandler = (itemid) => {
     removeFromWishlist(itemid, token, wishlistDispatch);
   };
+  // console.log(cart);
   return (
     <>
       <Header />
@@ -112,7 +113,7 @@ const Cart = () => {
                             <button
                               className="prod-quantity-decrease"
                               onClick={() =>
-                                cartQuantity <= 1
+                                item.qty <= 1
                                   ? removeFromCartHandler(item._id)
                                   : decreaseQuantityHandler(item._id)
                               }

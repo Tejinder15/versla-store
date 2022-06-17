@@ -41,23 +41,20 @@ const Header = () => {
             </Link>
           </div>
           <ul className={styles.nav_links}>
-            <li>
-              <span className="material-icons-outlined">search</span>
-            </li>
-            <li>
+            <li className="badge">
               <Link to="/wishlist" className={styles.nav_item}>
                 <span className="material-icons-outlined">favorite_border</span>
               </Link>
               {wishlist.length > 0 ? (
-                <div className={styles.notify_dot}></div>
+                <span className={styles.dot}>{wishlist.length}</span>
               ) : null}
             </li>
-            <li>
+            <li className="badge">
               <Link to="/cart" className={styles.nav_item}>
                 <span className="material-icons-outlined">shopping_bag</span>
               </Link>
               {cart.length > 0 ? (
-                <div className={styles.notify_dot}></div>
+                <div className={styles.dot}>{cart.length}</div>
               ) : null}
             </li>
             <li>
