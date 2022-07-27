@@ -34,45 +34,43 @@ const Header = () => {
   };
 
   return (
-    <>
-      <header>
-        <nav className="navbar container">
-          <div className="logo">
-            <Link to="/">
-              <h1 className={styles.logo}>Versla</h1>
+    <header>
+      <nav className="navbar container">
+        <div className="logo">
+          <Link to="/">
+            <h1 className={styles.logo}>Versla</h1>
+          </Link>
+        </div>
+        <ul className={styles.nav_links}>
+          <li className="badge">
+            <Link to="/wishlist" className={styles.nav_item}>
+              <span className="material-icons-outlined">favorite_border</span>
             </Link>
-          </div>
-          <ul className={styles.nav_links}>
-            <li className="badge">
-              <Link to="/wishlist" className={styles.nav_item}>
-                <span className="material-icons-outlined">favorite_border</span>
-              </Link>
-              {wishlist.length > 0 ? (
-                <span className={styles.dot}>{wishlist.length}</span>
-              ) : null}
-            </li>
-            <li className="badge">
-              <Link to="/cart" className={styles.nav_item}>
-                <span className="material-icons-outlined">shopping_bag</span>
-              </Link>
-              {cart.length > 0 ? (
-                <div className={styles.dot}>{cart.length}</div>
-              ) : null}
-            </li>
-            <li>
-              {
-                <button
-                  className={styles.login_btn}
-                  onClick={() => userHandler(checkStatus(userName))}
-                >
-                  {checkStatus(userName)}
-                </button>
-              }
-            </li>
-          </ul>
-        </nav>
-      </header>
-    </>
+            {wishlist.length > 0 ? (
+              <span className={styles.dot}>{wishlist.length}</span>
+            ) : null}
+          </li>
+          <li className="badge">
+            <Link to="/cart" className={styles.nav_item}>
+              <span className="material-icons-outlined">shopping_bag</span>
+            </Link>
+            {cart.length > 0 ? (
+              <div className={styles.dot}>{cart.length}</div>
+            ) : null}
+          </li>
+          <li>
+            {
+              <button
+                className={styles.login_btn}
+                onClick={() => userHandler(checkStatus(userName))}
+              >
+                {checkStatus(userName)}
+              </button>
+            }
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 };
 

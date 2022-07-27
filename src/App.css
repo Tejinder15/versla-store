@@ -14,7 +14,6 @@
 
 .textfield,
 input[type="password"] {
-  /* min-width: 100px !important; */
   width: 100%;
 }
 
@@ -119,6 +118,10 @@ input[type="password"] {
   justify-items: center;
 }
 
+.badge-image-title {
+  background-color: #e8e8e8;
+}
+
 .product-price {
   font-family: "Roboto", sans-serif;
   margin-top: -4px;
@@ -130,6 +133,7 @@ input[type="password"] {
 
 .basic-card-image {
   background-color: #e9ecef;
+  display: block;
 }
 
 .basic-card-actions {
@@ -164,7 +168,6 @@ input[type="password"] {
 .productcard_image {
   max-width: 100%;
   object-fit: cover;
-  height: 22rem;
 }
 
 .read_only_rating {
