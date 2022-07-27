@@ -126,12 +126,6 @@ const Signup = () => {
               value={user.confirmPassword}
             />
           </div>
-          <div className="choice-group">
-            <span className="choice-check">
-              <input type="checkbox" name="terms" id="terms" required />
-              <label htmlFor="terms">I accept all Terms &#38; Conditions</label>
-            </span>
-          </div>
           <button type="submit" className="btn btn-primary">
             Create New Account
           </button>

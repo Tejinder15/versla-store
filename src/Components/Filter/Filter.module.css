@@ -1,10 +1,11 @@
 .filter_panel {
-  height: 650px;
+  height: 100%;
   max-width: 280px;
   min-width: 250px;
-  padding: 1.6rem 1rem;
+  padding: 2rem 1rem 5rem 1rem;
+  /* padding: 2rem 1rem 0.6rem 1rem; */
   position: fixed;
-  top: 68px;
+  top: 62px;
   background-color: white;
   box-shadow: 2px 0px 3px rgba(0, 0, 0, 0.3);
   overflow-y: scroll;
@@ -74,10 +75,9 @@ input[type="range"] {
 
   .show_filter {
     transform: translateY(0%);
-    /* display: initial; */
   }
 
-  .filter_btn{
+  .filter_btn {
     display: block;
   }
 }
