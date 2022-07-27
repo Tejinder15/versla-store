@@ -1,4 +1,3 @@
-import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import { useFilter } from "../../Context/FilterContext/filter-context";
 import styles from "./Filter.module.css";
@@ -6,8 +5,6 @@ import PricePoints from "./PricePoints/PricePoints";
 
 const Filter = () => {
   const { filterstate, filterdispatch } = useFilter();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const queryGender = searchParams.get("gender");
   const [showFilter, setShowFilter] = useState(false);
   return (
     <>
@@ -94,36 +91,66 @@ const Filter = () => {
             />
             <label htmlFor="tshirt">T-Shirt</label>
           </div>
-          <div className="input-option">
-            <input
-              type="checkbox"
-              id="blouse"
-              name="blouse"
-              checked={filterstate.category.includes("Blouse")}
-              onChange={(e) =>
-                filterdispatch({
-                  type: "CATEGORY",
-                  payload: { category: "Blouse", isChecked: e.target.checked },
-                })
-              }
-            />
-            <label htmlFor="blouse">Blouse</label>
-          </div>
-          <div className="input-option">
-            <input
-              type="checkbox"
-              id="dress"
-              name="dress"
-              checked={filterstate.category.includes("Dress")}
-              onChange={(e) =>
-                filterdispatch({
-                  type: "CATEGORY",
-                  payload: { category: "Dress", isChecked: e.target.checked },
-                })
-              }
-            />
-            <label htmlFor="dress">Dress</label>
-          </div>
+          {filterstate.gender === "women" || filterstate.gender === "" ? (
+            <>
+              <div className="input-option">
+                <input
+                  type="checkbox"
+                  id="blouse"
+                  name="blouse"
+                  checked={filterstate.category.includes("Blouse")}
+                  onChange={(e) =>
+                    filterdispatch({
+                      type: "CATEGORY",
+                      payload: {
+                        category: "Blouse",
+                        isChecked: e.target.checked,
+                      },
+                    })
+                  }
+                />
+                <label htmlFor="blouse">Blouse</label>
+              </div>
+              <div className="input-option">
+                <input
+                  type="checkbox"
+                  id="dress"
+                  name="dress"
+                  checked={filterstate.category.includes("Dress")}
+                  onChange={(e) =>
+                    filterdispatch({
+                      type: "CATEGORY",
+                      payload: {
+                        category: "Dress",
+                        isChecked: e.target.checked,
+                      },
+                    })
+                  }
+                />
+                <label htmlFor="dress">Dress</label>
+              </div>
+              <div className="input-option">
+                <input
+                  type="checkbox"
+                  id="shorts"
+                  name="shorts"
+                  checked={filterstate.category.includes("Shorts")}
+                  onChange={(e) =>
+                    filterdispatch({
+                      type: "CATEGORY",
+                      payload: {
+                        category: "Shorts",
+                        isChecked: e.target.checked,
+                      },
+                    })
+                  }
+                />
+                <label htmlFor="shorts">Shorts</label>
+              </div>
+            </>
+          ) : (
+            ""
+          )}
           <div className="input-option">
             <input
               type="checkbox"
@@ -186,21 +213,6 @@ const Filter = () => {
               }
             />
             <label htmlFor="joggers">Joggers</label>
-          </div>
-          <div className="input-option">
-            <input
-              type="checkbox"
-              id="shorts"
-              name="shorts"
-              checked={filterstate.category.includes("Shorts")}
-              onChange={(e) =>
-                filterdispatch({
-                  type: "CATEGORY",
-                  payload: { category: "Shorts", isChecked: e.target.checked },
-                })
-              }
-            />
-            <label htmlFor="shorts">Shorts</label>
           </div>
           <div className="input-option">
             <input
