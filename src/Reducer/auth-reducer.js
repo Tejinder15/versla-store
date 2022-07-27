@@ -15,8 +15,8 @@ const authReducer = (state,action) => {
         case "LOGOUT":
             return {
                 ...state,
-                user: '',
-                token: ''
+                user: null,
+                token: null
             };
         case "CHECKUSER":
             return {

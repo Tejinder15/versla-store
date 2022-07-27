@@ -1,5 +1,6 @@
 .auth-container {
-  max-width: 325px;
+  max-width: 275px;
+  width: 96%;
   padding: 1.2rem 2.2rem;
   border-radius: 3px;
   box-sizing: content-box;
@@ -13,7 +14,7 @@
 
 .textfield,
 input[type="password"] {
-  min-width: 100px !important;
+  /* min-width: 100px !important; */
   width: 100%;
 }
 

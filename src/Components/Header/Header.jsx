@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../Context/AuthContext/auth-context";
 import styles from "./Header.module.css";
-import { useState } from "react";
 import { useWishlist } from "../../Context/WishContext/wishlist-context";
 import { useCart } from "../../Context/CartContext/cart-context";
 
@@ -10,6 +9,7 @@ const Header = () => {
   const { authState, authDispatch } = useAuth();
   const {
     wishlistState: { wishlist },
+    wishlistDispatch,
   } = useWishlist();
   const { cartState, cartDispatch } = useCart();
   const { cart } = cartState;
@@ -21,10 +21,12 @@ const Header = () => {
   };
 
   const logoutHandler = () => {
-    redirect("/");
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    cartDispatch({ type: "Empty_cart" });
+    wishlistDispatch({ type: "Empty_wishlist" });
     authDispatch({ type: "LOGOUT" });
+    redirect("/");
   };
 
   const userHandler = (type) => {
